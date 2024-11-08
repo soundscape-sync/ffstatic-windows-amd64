@@ -41,11 +41,11 @@ func FFprobePath() string { return ffprobePath }
 
 func init() {
 	var err error
-	ffmpegPath, err = writeTempExec("ffmpeg_windows_amd64", ffmpeg)
+	ffmpegPath, err = writeTempExec("ffmpeg_windows_amd64-*.exe", ffmpeg)
 	if err != nil {
 		panic(fmt.Errorf("failed to write ffmpeg_windows_amd64: %v", err))
 	}
-	ffprobePath, err = writeTempExec("ffprobe_windows_amd64", ffprobe)
+	ffprobePath, err = writeTempExec("ffprobe_windows_amd64-*.exe", ffprobe)
 	if err != nil {
 		panic(fmt.Errorf("failed to write ffprobe_windows_amd64: %v", err))
 	}
