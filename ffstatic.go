@@ -8,10 +8,10 @@ import (
     "os"
 )
 
-//go:embed linux_amd64/ffmpeg
+//go:embed ffmpeg
 var ffmpeg []byte
 
-//go:embed linux_amd64/ffprobe
+//go:embed ffprobe
 var ffprobe []byte
 
 func writeTempExec(pattern string, binary []byte) (string, error) {
@@ -41,12 +41,12 @@ func FFprobePath() string { return ffprobePath }
 
 func init() {
 	var err error
-	ffmpegPath, err = writeTempExec("ffmpeg_linux_amd64", ffmpeg)
+	ffmpegPath, err = writeTempExec("ffmpeg_windows_amd64", ffmpeg)
 	if err != nil {
-		panic(fmt.Errorf("failed to write ffmpeg_linux_amd64: %v", err))
+		panic(fmt.Errorf("failed to write ffmpeg_windows_amd64: %v", err))
 	}
-	ffprobePath, err = writeTempExec("ffprobe_linux_amd64", ffprobe)
+	ffprobePath, err = writeTempExec("ffprobe_windows_amd64", ffprobe)
 	if err != nil {
-		panic(fmt.Errorf("failed to write ffprobe_linux_amd64: %v", err))
+		panic(fmt.Errorf("failed to write ffprobe_windows_amd64: %v", err))
 	}
 }
